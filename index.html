@@ -1,130 +1,49 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Happy Birthday Sirisha (Chinni) ❤️</title>
-
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-body{
-    height:100vh;
-    font-family:'Segoe UI', sans-serif;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    overflow:hidden;
-    color:white;
-}
-
-/* Background image */
-.bg{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:url('collage.jpg') center/cover no-repeat;
-    filter:brightness(0.5);
-    z-index:-1;
-}
-
-.container{
-    background:rgba(0,0,0,0.4);
-    padding:30px;
-    border-radius:20px;
-    backdrop-filter:blur(8px);
-    animation:fadeIn 2s ease-in-out;
-}
-
-h1{
-    font-size:2.5rem;
-    margin-bottom:15px;
-}
-
-p{
-    font-size:1.2rem;
-    margin-bottom:15px;
-}
-
-button{
-    padding:12px 25px;
-    border:none;
-    border-radius:30px;
-    background:#ff4e8a;
-    color:white;
-    font-weight:bold;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-button:hover{
-    background:white;
-    color:#ff4e8a;
-}
-
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(20px);}
-    to{opacity:1; transform:translateY(0);}
-}
-
-.heart{
-    position:absolute;
-    font-size:20px;
-    animation:float 6s linear infinite;
-}
-
-@keyframes float{
-    0%{transform:translateY(100vh); opacity:0;}
-    50%{opacity:1;}
-    100%{transform:translateY(-10vh); opacity:0;}
-}
+body, html{margin:0;padding:0;overflow:hidden;width:100%;height:100%;font-family:Segoe UI,sans-serif;}
+.bg{position:fixed;top:0;left:0;width:100%;height:100%;background:url('collage.jpg')center/cover no-repeat;filter:brightness(0.5);}
+.container{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:white;padding:20px;}
+h1{font-size:2.8rem;margin-bottom:10px;}
+p{font-size:1.2rem; margin-bottom:20px;}
+.btn{padding:12px 25px;border:none;border-radius:25px;background:#ff4e8a;color:#fff;font-weight:bold;cursor:pointer;font-size:1rem;}
+.heart{position:absolute;font-size:18px;animation:float 6s linear infinite;}
+@keyframes float{0%{transform:translateY(100vh);opacity:0;}50%{opacity:1;}100%{transform:translateY(-10vh);opacity:0;}}
 </style>
 </head>
 
 <body>
-
 <div class="bg"></div>
 
 <div class="container">
-    <h1>Happy Birthday Sirisha (Chinni) ❤️</h1>
-    <p>Every memory with you is my favorite memory 💖<br>
-    You are my happiness, my peace and my forever.</p>
-
-    <button onclick="showMessage()">Click for Surprise 🎁</button>
-    <p id="surprise"></p>
+  <h1>Happy Birthday Sirisha (Chinni) ❤️</h1>
+  <p>Every memory with you is my favourite memory 💖</p>
+  <button class="btn" onclick="startMusic()">Play Our Song 🎶</button>
+  <p id="surprise"></p>
 </div>
 
-<!-- Background Music -->
-<audio id="bgMusic" autoplay loop>
-    <source src="Madhuvaramae Ringtone.mp3" type="audio/mpeg">
-</audio>
-
 <script>
-function showMessage(){
-    document.getElementById("surprise").innerHTML =
-    "I am so lucky to have you in my life Chinni 💕<br>May your smile always stay the same forever! 🎂✨";
+let audio = new Audio('Madhuvaramae Ringtone.mp3');
+
+function startMusic(){
+  audio.play();
+  document.getElementById("surprise").innerHTML = "I love you Chinni 💕🎂";
 }
 
-/* Floating Hearts */
 function createHeart(){
-    const heart=document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML="❤️";
-    heart.style.left=Math.random()*100+"vw";
-    heart.style.animationDuration=(Math.random()*3+3)+"s";
-    document.body.appendChild(heart);
-    setTimeout(()=>{heart.remove();},6000);
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.textContent = "❤️";
+  heart.style.left = Math.random()*100+"vw";
+  heart.style.animationDuration = (Math.random()*3+3)+"s";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
 }
-
-setInterval(createHeart,400);
+setInterval(createHeart,500);
 </script>
 
 </body>
