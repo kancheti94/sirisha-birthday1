@@ -14,26 +14,23 @@ body,html{
   height:100%;
   overflow:hidden;
   font-family:'Poppins',sans-serif;
-  background:black;
 }
 
-/* 🌌 Background with Slow Zoom */
+/* 🌌 Background Image (LOCAL FILE) */
 .bg{
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  background-image:url("https://kancheti94.github.io/sirisha-birthday1/collage.jpg");
+  background:url("collage.jpg") no-repeat center center;
   background-size:cover;
-  background-position:center;
-  background-repeat:no-repeat;
   filter:brightness(0.45);
-  animation:zoomEffect 20s infinite alternate ease-in-out;
+  animation:zoom 20s infinite alternate ease-in-out;
   z-index:-2;
 }
 
-@keyframes zoomEffect{
+@keyframes zoom{
   from{transform:scale(1);}
   to{transform:scale(1.1);}
 }
@@ -61,12 +58,12 @@ body,html{
 h1{
   font-family:'Great Vibes',cursive;
   font-size:3rem;
-  animation:glow 2s ease-in-out infinite alternate;
+  animation:glow 2s infinite alternate;
 }
 
 @keyframes glow{
-  from{text-shadow:0 0 10px #ff4e8a,0 0 20px #ff4e8a;}
-  to{text-shadow:0 0 20px #fff,0 0 40px #ff1f6d;}
+  from{text-shadow:0 0 10px #ff4e8a;}
+  to{text-shadow:0 0 25px #ff1f6d,0 0 40px #fff;}
 }
 
 #typed{
@@ -94,7 +91,7 @@ h1{
   background:#ff1f6d;
 }
 
-/* 🌹 Rose Petals */
+/* 🌹 Falling Roses */
 .petal{
   position:absolute;
   top:-10px;
@@ -119,38 +116,35 @@ h1{
 <div class="container">
   <h1>Happy Birthday Sirisha ❤️</h1>
   <div id="typed"></div>
-  <button class="btn" onclick="unmuteMusic()">Tap to Feel the Magic 🎶</button>
+  <button class="btn" onclick="enableMusic()">Tap to Play Music 🎶</button>
 </div>
 
 <script>
 
-/* 🎵 Background Music */
+/* 🎵 Music */
 let audio = new Audio("Madhuvaramae Ringtone.mp3");
 audio.loop = true;
-audio.muted = true;
-audio.play();
 
-/* Unmute on Button Click */
-function unmuteMusic(){
-  audio.muted = false;
+function enableMusic(){
   audio.play();
 }
 
-/* ⌨️ Typing Animation */
-let message = "Every memory with you is my favourite memory 💖";
+/* ⌨️ Typing Effect */
+let text = "Every memory with you is my favourite memory 💖";
 let i = 0;
-function typeEffect(){
-  if(i < message.length){
-    document.getElementById("typed").innerHTML += message.charAt(i);
+
+function typing(){
+  if(i < text.length){
+    document.getElementById("typed").innerHTML += text.charAt(i);
     i++;
-    setTimeout(typeEffect,50);
+    setTimeout(typing,50);
   }
 }
-typeEffect();
+typing();
 
-/* 🌹 Falling Rose Petals */
+/* 🌹 Rose Effect */
 function createPetal(){
-  let petal = document.createElement("div");
+  let petal=document.createElement("div");
   petal.className="petal";
   petal.innerHTML="🌹";
   petal.style.left=Math.random()*100+"vw";
