@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday Sirisha (Chinni) ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -12,25 +12,37 @@ body, html{
   margin:0;
   padding:0;
   overflow:hidden;
-  width:100%;
   height:100%;
   font-family:'Poppins',sans-serif;
   background:black;
+  color:white;
 }
 
-/* Background */
+/* 🔥 JPG Background */
 .bg{
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  background:url('collage.jpg') center/cover no-repeat;
-  filter:brightness(0.4);
+  background-image:url("./collage.jpg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  filter:brightness(0.45);
   z-index:-2;
 }
 
-/* Center Container */
+/* Dark Overlay */
+.overlay{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.3);
+  z-index:-1;
+}
+
+/* Center Content */
 .container{
   position:absolute;
   top:50%;
@@ -38,14 +50,13 @@ body, html{
   transform:translate(-50%,-50%);
   text-align:center;
   padding:20px;
-  color:white;
 }
 
-/* Main Heading */
+/* Heading */
 h1{
-  font-size:3rem;
-  margin-bottom:10px;
   font-family:'Great Vibes',cursive;
+  font-size:3rem;
+  margin-bottom:5px;
   background: linear-gradient(45deg,#ff4e8a,#ff9a44,#ff4e8a);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
@@ -56,19 +67,19 @@ h1{
   font-size:3.2rem;
   font-weight:bold;
   color:#ff4e8a;
-  text-shadow:0 0 10px #ff4e8a, 0 0 20px #ff1493, 0 0 40px #ff69b4;
-  animation: glow 2s infinite alternate;
+  text-shadow:0 0 10px #ff4e8a,0 0 20px #ff1493,0 0 40px #ff69b4;
+  animation:glow 2s infinite alternate;
 }
 
 @keyframes glow{
-  from{ text-shadow:0 0 10px #ff4e8a,0 0 20px #ff1493; }
-  to{ text-shadow:0 0 20px #ff69b4,0 0 40px #ff1493; }
+  from{ text-shadow:0 0 10px #ff4e8a; }
+  to{ text-shadow:0 0 30px #ff1493; }
 }
 
 /* Heartbeat */
 .beat{
   display:inline-block;
-  animation: heartbeat 1s infinite;
+  animation:heartbeat 1s infinite;
 }
 
 @keyframes heartbeat{
@@ -83,10 +94,10 @@ h1{
 .typewriter{
   font-size:1.4rem;
   margin-top:15px;
-  height:30px;
-  overflow:hidden;
   border-right:2px solid white;
   white-space:nowrap;
+  overflow:hidden;
+  min-height:30px;
 }
 
 /* Button */
@@ -100,13 +111,10 @@ h1{
   font-weight:bold;
   cursor:pointer;
   font-size:1rem;
-  transition:0.3s;
   box-shadow:0 0 20px rgba(255,78,138,0.7);
+  transition:0.3s;
 }
-
-.btn:hover{
-  transform:scale(1.1);
-}
+.btn:hover{ transform:scale(1.1); }
 
 /* Floating Hearts */
 .heart{
@@ -114,20 +122,18 @@ h1{
   font-size:18px;
   animation:float 6s linear infinite;
 }
-
 @keyframes float{
   0%{transform:translateY(100vh);opacity:0;}
   50%{opacity:1;}
   100%{transform:translateY(-10vh);opacity:0;}
 }
 
-/* Firework */
+/* Fireworks */
 .firework{
   position:absolute;
   font-size:24px;
-  animation: explode 1s ease-out forwards;
+  animation:explode 1s ease-out forwards;
 }
-
 @keyframes explode{
   0%{transform:scale(0);opacity:1;}
   100%{transform:scale(3);opacity:0;}
@@ -138,6 +144,7 @@ h1{
 <body>
 
 <div class="bg"></div>
+<div class="overlay"></div>
 
 <div class="container">
   <h1>Happy Birthday</h1>
@@ -154,40 +161,36 @@ h1{
 </div>
 
 <script>
-let audio = new Audio('Madhuvaramae Ringtone.mp3');
+let audio=new Audio('Madhuvaramae Ringtone.mp3');
 
-let message = "Every memory with you is my favourite memory 💖";
-let i = 0;
-
+/* Typewriter */
+let text="Every memory with you is my favourite memory 💖";
+let i=0;
 function typeEffect(){
-  if(i < message.length){
-    document.getElementById("typewriter").innerHTML += message.charAt(i);
+  if(i<text.length){
+    document.getElementById("typewriter").innerHTML+=text.charAt(i);
     i++;
     setTimeout(typeEffect,50);
   }
 }
 typeEffect();
 
-function startCelebration(){
-  audio.play();
-  document.getElementById("surprise").innerHTML = "I Miss You Chinni 💕🎂";
-  launchFireworks();
-}
-
+/* Floating Hearts */
 function createHeart(){
-  let heart = document.createElement("div");
-  heart.className = "heart";
-  heart.textContent = "❤️";
-  heart.style.left = Math.random()*100+"vw";
-  heart.style.animationDuration = (Math.random()*3+3)+"s";
+  let heart=document.createElement("div");
+  heart.className="heart";
+  heart.textContent="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(Math.random()*3+3)+"s";
   document.body.appendChild(heart);
   setTimeout(()=>heart.remove(),6000);
 }
 setInterval(createHeart,500);
 
+/* Fireworks */
 function launchFireworks(){
-  for(let j=0;j<20;j++){
-    let fire = document.createElement("div");
+  for(let j=0;j<25;j++){
+    let fire=document.createElement("div");
     fire.className="firework";
     fire.textContent="🎆";
     fire.style.left=Math.random()*100+"vw";
@@ -195,6 +198,12 @@ function launchFireworks(){
     document.body.appendChild(fire);
     setTimeout(()=>fire.remove(),1000);
   }
+}
+
+function startCelebration(){
+  audio.play();
+  document.getElementById("surprise").innerHTML="I Miss You Chinni 💕🎂";
+  launchFireworks();
 }
 </script>
 
