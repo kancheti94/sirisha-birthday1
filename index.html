@@ -18,14 +18,14 @@ body, html{
   color:white;
 }
 
-/* 🔥 JPG Background */
+/* JPG Background */
 .bg{
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  background-image:url("./collage.jpg");
+  background-image:url("https://kancheti94.github.io/sirisha-birthday1/collage.jpg");
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
@@ -163,9 +163,9 @@ h1{
 <script>
 let audio=new Audio('Madhuvaramae Ringtone.mp3');
 
-/* Typewriter */
 let text="Every memory with you is my favourite memory 💖";
 let i=0;
+
 function typeEffect(){
   if(i<text.length){
     document.getElementById("typewriter").innerHTML+=text.charAt(i);
@@ -175,7 +175,6 @@ function typeEffect(){
 }
 typeEffect();
 
-/* Floating Hearts */
 function createHeart(){
   let heart=document.createElement("div");
   heart.className="heart";
@@ -187,7 +186,6 @@ function createHeart(){
 }
 setInterval(createHeart,500);
 
-/* Fireworks */
 function launchFireworks(){
   for(let j=0;j<25;j++){
     let fire=document.createElement("div");
